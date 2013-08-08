@@ -32,6 +32,28 @@ var midHeight = (c.height / 2);
 var id = ctx.createImageData(1,1); // only do this once per page
 var d  = id.data;                        // only do this once per page
 
+// goes from black to transparent
+//for (var i = 10000; i >= 0; i--) {
+    //modW = getRandomInt(-1,1);
+    //modH = getRandomInt(-1,1);
+    //midWidth = midWidth + modW;
+    //midHeight = midHeight + modH;
+
+    //d[0]   = 0;
+    //d[1]   = 0;
+    //d[2]   = 0;
+
+    //counter = counter + 1;
+    //if(counter === Math.floor(i/250)){
+        //console.log('hit');
+        //alpha--;
+        //counter = 1;
+    //}
+    //d[3] = alpha;
+
+    //ctx.putImageData( id, midWidth, midHeight );     
+//}
+
 for (var i = 10000; i >= 0; i--) {
     modW = getRandomInt(-1,1);
     modH = getRandomInt(-1,1);
@@ -41,21 +63,41 @@ for (var i = 10000; i >= 0; i--) {
     d[0]   = 0;
     d[1]   = 0;
     d[2]   = 0;
-
-    counter = counter + 1;
-    if(counter === Math.floor(i/250)){
-        console.log('hit');
-        alpha--;
-        counter = 1;
-    }
     d[3] = alpha;
-    //d[3]   = Math.floor(i/Math.floor(i/255));
 
-    console.log(d[3]);
     ctx.putImageData( id, midWidth, midHeight );     
 }
 
-console.log('t',255*39);
-console.log(Math.floor(100/100/255), 00000/39);
-console.log(getRandomInt(-1,1));
+midWidth = (c.width / 2);
+jidHeight = (c.height / 2);
 
+for (var i = 10000; i >= 0; i--) {
+    modW = getRandomInt(-1,1);
+    modH = getRandomInt(-1,1);
+    midWidth = midWidth + modW;
+    midHeight = midHeight + modH;
+
+    d[0]   = 0;
+    d[1]   = 0;
+    d[2]   = 0;
+    d[3] = 133;
+
+    ctx.putImageData( id, midWidth, midHeight );     
+}
+
+midWidth = (c.width / 2);
+jidHeight = (c.height / 2);
+
+for (var i = 10000; i >= 0; i--) {
+    modW = getRandomInt(-1,1);
+    modH = getRandomInt(-1,1);
+    midWidth = midWidth + modW;
+    midHeight = midHeight + modH;
+
+    d[0]   = 0;
+    d[1]   = 0;
+    d[2]   = 0;
+    d[3] = 50;
+
+    ctx.putImageData( id, midWidth, midHeight );     
+}
