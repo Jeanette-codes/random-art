@@ -106,3 +106,6 @@ for (var i = 10000; i >= 0; i--) {
     ctx.putImageData( id, midWidth, midHeight );     
 }
 
+// to save the image
+var img = c.toDataURL("image/png");
+document.write('<img src="'+img+'"/>');
