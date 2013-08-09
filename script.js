@@ -60,12 +60,18 @@ var brush = function(pixels, startX, startY) {
     }
 }
 
-$(document).on('click',function(){
-    canvas.width = canvas.width;
-    for(var f = 0; f <= 2; f++){
-        brush(20000, midWidth, midHeight);
-        reset();
-    }
+
+$(document).ready(function(){
+    brush(20000, midWidth, midHeight);
+    reset();
+
+    $(document).on('click',function(){
+        canvas.width = canvas.width;
+        for(var f = 0; f <= 2; f++){
+            brush(20000, midWidth, midHeight);
+            reset();
+        }
+    });
 });
 
 // to save the image
