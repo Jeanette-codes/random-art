@@ -12,8 +12,6 @@ function getRandomInt (min, max) {
 function reset() {
     alpha = 255;
     counter = 1;
-    midWidth = (c.width / 2);
-    midHeight = (c.height / 2);
 }
 
 
@@ -39,73 +37,37 @@ function reset() {
 var id = ctx.createImageData(1,1); // only do this once per page
 var d  = id.data;                        // only do this once per page
 
-// goes from black to transparent
-for (var i = 10000; i >= 0; i--) {
-    modW = getRandomInt(-1,1);
-    modH = getRandomInt(-1,1);
-    midWidth = midWidth + modW;
-    midHeight = midHeight + modH;
+var brush = function(pixels, startX, startY) {
+    // goes from black to transparent
+    for (var i = pixels; i >= 0; i--) {
+        modW = getRandomInt(-1,1);
+        modH = getRandomInt(-1,1);
+        startX = startX + modW;
+        startY = startY + modH;
 
-    d[0]   = 0;
-    d[1]   = 0;
-    d[2]   = 0;
+        d[0]   = 0; //red 
+        d[1]   = 0; //green
+        d[2]   = 0; //blue
 
-    counter = counter + 1;
-    if(counter === Math.floor(i/250)){
-        alpha--;
-        counter = 1;
+        counter = counter + 1;
+        if(counter === Math.floor(i/250)){
+            alpha--;
+            counter = 1;
+        }
+        d[3] = alpha;
+
+        ctx.putImageData( id, startX, startY );     
     }
-    d[3] = alpha;
-
-    ctx.putImageData( id, midWidth, midHeight );     
 }
 
-reset();
-
-// goes from black to transparent
-for (var i = 10000; i >= 0; i--) {
-    modW = getRandomInt(-1,1);
-    modH = getRandomInt(-1,1);
-    midWidth = midWidth + modW;
-    midHeight = midHeight + modH;
-
-    d[0]   = 0;
-    d[1]   = 0;
-    d[2]   = 0;
-
-    counter = counter + 1;
-    if(counter === Math.floor(i/250)){
-        alpha--;
-        counter = 1;
+$(document).on('click',function(){
+    canvas.width = canvas.width;
+    for(var f = 0; f <= 2; f++){
+        brush(20000, midWidth, midHeight);
+        reset();
     }
-    d[3] = alpha;
-
-    ctx.putImageData( id, midWidth, midHeight );     
-}
-
-reset();
-
-// goes from black to transparent
-for (var i = 10000; i >= 0; i--) {
-    modW = getRandomInt(-1,1);
-    modH = getRandomInt(-1,1);
-    midWidth = midWidth + modW;
-    midHeight = midHeight + modH;
-
-    d[0]   = 0;
-    d[1]   = 0;
-    d[2]   = 0;
-
-    counter = counter + 1;
-    if(counter === Math.floor(i/250)){
-        alpha--;
-        counter = 1;
-    }
-    d[3] = alpha;
-
-    ctx.putImageData( id, midWidth, midHeight );     
-}
+});
 
 // to save the image
-var img = c.toDataURL("image/png");
-document.write('<img src="'+img+'"/>');
+//var img = c.toDataURL("image/png");
+//document.write('<img src="'+img+'"/>');
