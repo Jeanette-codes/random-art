@@ -65,7 +65,7 @@ $(document).ready(function(){
     brush(20000, midWidth, midHeight);
     reset();
 
-    $(document).on('click',function(){
+    $(window).on('click',function(){
         canvas.width = canvas.width;
         for(var f = 0; f <= 2; f++){
             brush(20000, midWidth, midHeight);
